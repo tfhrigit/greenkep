@@ -1,0 +1,28 @@
+name: Green Commit
+
+on:
+  schedule:
+   - cron: '0 0 * * *' 
+  workflow_dispatch:
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@ve
+
+      - name: Set Git Config
+        run: |
+          git config user.name "tfhrigit"
+          git config user.email "alexaboy430@gmail.com"
+      - name: Make changes
+        run: |
+          date >> log.txt
+      - name: Commit & Push
+        run: |
+          git add log.txt
+          git commit -m "first"
+          git push
+        
+    
